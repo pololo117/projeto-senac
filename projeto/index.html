@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trunfo Das Strains</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-icon">🌿</div>
+        <div class="brand-copy">
+          <h1>Trunfo Das Strainss</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="panel pad status-panel">
+        <div class="status-core"></div>
+        <div class="status-text">
+          <h2 id="statusTitle">Partida pronta</h2>
+          <p id="statusText">Escolha um atributo da sua carta para disputar a rodada.</p>
+        </div>
+      </div>
+
+      <div class="panel pad mini">
+        <div class="k">Rodada</div>
+        <div class="v" id="roundNumber">1</div>
+        <div class="s" id="turnInfo">Sua vez de escolher</div>
+      </div>
+
+      <div class="panel pad mini">
+        <div class="k">Vitórias suas</div>
+        <div class="v" id="playerWins">0</div>
+        <div class="s">Rodadas vencidas por você</div>
+      </div>
+
+      <div class="panel pad mini">
+        <div class="k">Vitórias CPU</div>
+        <div class="v" id="cpuWins">0</div>
+        <div class="s">Rodadas vencidas pela máquina</div>
+      </div>
+
+      <div class="panel pad progress-panel">
+        <div class="progress-top">
+          <span id="progressLabel">Controle do deck</span>
+          <span id="progressPercent">50%</span>
+        </div>
+        <div class="big-bar">
+          <div class="big-bar-fill" id="deckControlBar"></div>
+        </div>
+        <div class="s progress-sub" id="progressSub">A barra mostra a fatia do baralho sob seu controle.</div>
+      </div>
+    </div>
+
+    <div class="battle">
+      <div class="column">
+        <div class="strip panel">
+          <div class="strip-left">
+            <div class="avatar">🧑</div>
+            <div class="strip-info">
+              <strong>Jogador</strong>
+              <span>Você escolhe os atributos quando o turno é seu</span>
+            </div>
+          </div>
+          <div class="deck-num">
+            <div class="n" id="playerDeckCount">0</div>
+            <div class="d">cartas no deck</div>
+          </div>
+        </div>
+
+        <div class="card-shell">
+          <div class="card-3d" id="playerCard3d"></div>
+        </div>
+      </div>
+
+      <div class="center-stack">
+        <div class="deck-stack" aria-hidden="true">
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+        </div>
+
+        <div class="vs-badge">VS</div>
+
+        <div class="round-box panel">
+          <strong id="centerRound">Rodada 1</strong>
+          <span id="centerText">Escolha um atributo para comparar.</span>
+        </div>
+
+        <div class="deck-stack" aria-hidden="true">
+          <div class="layer"></div>
+          <div class="layer"></div>
+          <div class="layer"></div>
+        </div>
+
+        <div class="center-controls">
+          <button class="primary" id="btnNewGame">Novo jogo</button>
+          <button class="secondary" id="btnNextRound" disabled>Próxima rodada</button>
+          <button class="gold" id="btnToggleSound">Som: ON</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="strip panel">
+          <div class="strip-left">
+            <div class="avatar">🤖</div>
+            <div class="strip-info">
+              <strong>CPU</strong>
+              <span>A carta fica virada até a disputa acontecer</span>
+            </div>
+          </div>
+          <div class="deck-num">
+            <div class="n" id="cpuDeckCount">0</div>
+            <div class="d">cartas no deck</div>
+          </div>
+        </div>
+
+        <div class="card-shell">
+          <div class="card-3d" id="cpuCard3d"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-grid">
+      <div class="panel championship">
+        <h4>Modo campeonato</h4>
+        <div class="tournament-list" id="tournamentList"></div>
+      </div>
+
+      <div class="panel history">
+        <h4>Histórico de rodadas</h4>
+        <div class="log" id="log"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="finalOverlay">
+    <div class="modal">
+      <h2 id="finalTitle">Fim de jogo</h2>
+      <p id="finalText">A partida terminou.</p>
+
+      <div class="chips" id="finalChips"></div>
+
+      <div class="final-grid">
+        <div class="final-box">
+          <div class="k">Suas cartas</div>
+          <div class="v" id="finalPlayerCards">0</div>
+        </div>
+        <div class="final-box">
+          <div class="k">Cartas da CPU</div>
+          <div class="v" id="finalCpuCards">0</div>
+        </div>
+        <div class="final-box">
+          <div class="k">Rodadas totais</div>
+          <div class="v" id="finalRounds">0</div>
+        </div>
+        <div class="final-box">
+          <div class="k">Etapa alcançada</div>
+          <div class="v" id="finalStage">0</div>
+        </div>
+      </div>
+
+      <button class="primary" id="btnRestartOverlay">Jogar novamente</button>
+    </div>
+  </div>
+
+  <div class="sound-indicator">
+    <div class="tiny-dot" id="soundDot"></div>
+    <span id="soundLabel">Som ativado</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
